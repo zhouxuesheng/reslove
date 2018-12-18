@@ -59,7 +59,7 @@ public class ResolveExcelServiceImpl implements ResolveExcelService {
     public static final int passWardLength = 6;
 
     @Override
-    public List<UserInfoBO> resolveExcel(String  fileName) throws BusinessException {
+    public List<UserInfoBO> resolveExcel(String  fileName,String orgName,String orgGid) throws BusinessException {
 
     	
     	File file =  new File(fileName);
@@ -159,7 +159,7 @@ public class ResolveExcelServiceImpl implements ResolveExcelService {
             }
         }
 
-        userInfoServiceImpl.batchInsertUserInfo(list);
+        userInfoServiceImpl.batchInsertUserInfo(list,orgName,orgGid);
 //        userInfoServiceImpl.batchInsertUserInfoByMySql(list);
         return list;
     }

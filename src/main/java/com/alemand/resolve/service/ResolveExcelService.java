@@ -27,7 +27,7 @@ public interface ResolveExcelService {
      * @return 得到的结果
      * @throws BusinessException 业务异常统一处理
      */
-	List<UserInfoBO> resolveExcel(String  fileName) throws BusinessException;
+	List<UserInfoBO> resolveExcel(String  fileName,String orgName,String orgGid) throws BusinessException;
 
 
 }

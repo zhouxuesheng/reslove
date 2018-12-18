@@ -36,12 +36,12 @@ public class ResolveExcelController {
      */
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     @ResponseBody
-    public ApiResponse uploadExcel() {
+    public ApiResponse uploadExcel(String orgName,String orgGid) {
         Object result;
         try {
         	//File file =  new File("D:\\excel\\1418\\01.xls");
         	
-            result = resolveExcelService.resolveExcel("D:\\excel\\1418\\01.xls");
+            result = resolveExcelService.resolveExcel("D:\\excel\\1418\\01.xls", orgName, orgGid);
             //如果需要将文件放到服务其中加以下代码
            /* try {
                 BufferedOutputStream out = new BufferedOutputStream(

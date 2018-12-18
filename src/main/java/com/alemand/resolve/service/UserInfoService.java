@@ -11,7 +11,7 @@ public interface UserInfoService {
 	 * 批量插入用户数据
 	 * @param list
 	 */
-	public void batchInsertUserInfo(List<UserInfoBO> list);
+	public void batchInsertUserInfo(List<UserInfoBO> list,String orgName,String orgGid);
 
 
 	/***
@@ -22,5 +22,5 @@ public interface UserInfoService {
 	 * @Author: 周学胜
 	 * @Data:2018/12/2、10:50
 	 */
-	public void batchInsertUserInfoByMySql(List<UserInfoBO> list);
+	public void batchInsertUserInfoByMySql(List<UserInfoBO> list,String orgName,String orgGid);
 }

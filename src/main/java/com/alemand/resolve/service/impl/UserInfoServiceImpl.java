@@ -25,10 +25,14 @@ public class UserInfoServiceImpl implements UserInfoService {
 //	private static String orgGids ="302835";
 //	private static String orgName="甘肃农业大学";
 	
-	private static Integer orgGid =1418;
-	private static String orgGids ="1418";
-	private static String orgName="兰州大学";
-	
+//	private static Integer orgGid =1418;
+//	private static String orgGids ="1418";
+//	private static String orgName="兰州大学";
+
+//	private static Integer orgGid =300403;
+//	private static String orgGids ="300403";
+//	private static String orgName="北京交通大学图书馆";
+
 	
 //	private static Integer orgGid =301191;
 //	private static String orgGids ="301191";
@@ -36,7 +40,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 	
 	@Override
 	@Transactional
-	public void batchInsertUserInfo(List<UserInfoBO> list) {
+	public void batchInsertUserInfo(List<UserInfoBO> list,String orgName,String orgGids) {
 		SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
 		list.forEach(bo -> {
 
@@ -101,7 +105,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 	@Override
 	@Transactional
-	public void batchInsertUserInfoByMySql(List<UserInfoBO> list) {
+	public void batchInsertUserInfoByMySql(List<UserInfoBO> list,String orgName,String orgGid) {
 		SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
 		list.forEach(bo -> {
 
@@ -116,7 +120,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 
 			PassportInfoBOByMySql infoBO = new PassportInfoBOByMySql();
 			infoBO.setGid(passportGid);
-			infoBO.setOrgGid(Integer.valueOf(orgGids));
+			infoBO.setOrgGid(Integer.valueOf(orgGid));
 			infoBO.setPassport(bo.getCardCode());
 			infoBO.setPassword("123456");
 			infoBO.setPassportType(5);
