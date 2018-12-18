@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alemand.resolve.dao.UserInfoDAO">
+
+
+	<insert id="insertPassportInfo" parameterType="com.alemand.resolve.entity.PassportInfoBO">
+	insert into passport_info (GID, PASSPORT, USER_PSW, STATUS, NICK_NAME, USER_TEL, PASSPORT_TYPE, USERTYPE_CODE, UPDATE_FLAG, CREATE_DATE) 
+						values (#{gid}, #{passport}, '123456', 1, #{nickName}, '', 4, '01', 0, sysdate)
+	</insert>
+	
+	<insert id="insertPassportInfoDetail" parameterType="com.alemand.resolve.entity.PassportInfoDetailBO">
+	insert into PASSPORT_INFO_DETAIL (gid,PASSPORT_GID,REAL_NAME,SEX,DEPARTMENT,READER_TYPE,SCHOOL_NAME) 
+	values (#{gid},#{passportGid},#{realName,jdbcType=VARCHAR},#{sex,jdbcType=INTEGER},#{department,jdbcType=VARCHAR},#{readerType,jdbcType=VARCHAR},#{schoolName,jdbcType=VARCHAR})
+	</insert>
+	
+	
+	<insert id="insertUserCardCode" parameterType="com.alemand.resolve.entity.UserCardcodeBO">
+	insert into user_cardcode (GID, CARD_CODE, CARD_PSW, MARK, PASSPORT_GID, ORG_GID, SUBMIT_TIME, CODE_STATUS, MAX_COPY, USER_TYPE, READER_TYPE, DEPT, NAME, USER_GID) 
+	values (#{gid,jdbcType=VARCHAR}, #{cardCode,jdbcType=VARCHAR}, '123456', '', #{passportGid,jdbcType=VARCHAR}, #{orgGid,jdbcType=VARCHAR}, sysdate, 1, null, '', #{readerType,jdbcType=VARCHAR}, #{dept,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, null)
+	</insert>
+	
+	
+	<insert id="insertPassporOrg" parameterType="com.alemand.resolve.entity.PassPortOrg">
+	INSERT INTO PASSPORT_ORG (GID,PASSPORT_GID,ORG_GID) Values (#{gid},#{passportGid},#{orgGid})
+	</insert>
+	
+</mapper>

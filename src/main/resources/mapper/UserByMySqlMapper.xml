@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alemand.resolve.dao.UserInfoDAOByMySql">
+
+
+    <insert id="insertPassportInfo" parameterType="com.alemand.resolve.entity.PassportInfoBOByMySql">
+insert into RMD_T_PASSPORT (GID, ORG_GID, PASSPORT, PASSWORD, PASSPORT_TYPE, USERTYPE_CODE, CREATE_ID, CREATE_TIME, UPDATE_ID, UPDATE_TIME)
+						values (#{gid}, #{orgGid}, #{passport},#{password}, #{passportType}, #{usertypeCode}, 'system', now(), 'system', NOW())
+	</insert>
+
+    <insert id="insertPassportInfoDetail" parameterType="com.alemand.resolve.entity.PassportInfoDetailBOByMySql">
+
+	insert into RMD_T_PASSPORT_DETAIL (GID,PASSPORT_GID,NICK_NAME,TEL_PHONE,REAL_NAME,SEX,EMAIL,HEADER_IMG,DEPT,ADDRESS,MARK,CREATE_ID,CREATE_TIME,UPDATE_ID,UPDATE_TIME)
+values (#{gid},#{passportgid},#{nickName},#{telPhone},#{realName},#{sex},#{email},null,#{dept},#{address},#{mark}, 'system', now(), 'system', NOW())
+
+	</insert>
+
+
+    <insert id="insertUserCardCode" parameterType="com.alemand.resolve.entity.UserCardcodeBOByMySql">
+
+	INSERT INTO RMD_T_PASSPORT_CARD ( GID, CARD_CODE, PASSPORT_GID, READER_TYPE, READER_TYPE_NAME, CREATE_ID, CREATE_TIME, UPDATE_ID, UPDATE_TIME)
+	VALUES (#{gid},#{cardCode}, #{passportgid},#{readerType}, #{readerTypeName}, 'system', now(), 'system', NOW());
+
+	</insert>
+
+
+</mapper>
