@@ -82,13 +82,13 @@ public class UserInfoServiceImpl implements UserInfoService {
 			UserCardcodeBO cardcodeBO = new UserCardcodeBO();
 			String cardGid = String.valueOf(idWorker.nextId());
 			cardcodeBO.setGid(cardGid);
-			cardcodeBO.setCardCode(bo.getCardCode());
+			cardcodeBO.setCardCode(bo.getCardCode().trim());
 			cardcodeBO.setPassportGid(passportGid);
 			cardcodeBO.setOrgGid(orgGids);
 //			cardcodeBO.setSubmitTime(LocalDateTime.now());
 			cardcodeBO.setReaderType(bo.getReaderType());
 			cardcodeBO.setDept(bo.getDenp());
-			cardcodeBO.setName(bo.getNickName());
+			cardcodeBO.setName(bo.getNickName().trim());
 			cardcodeBO.setPassport(passport);
 			userInfoDAO.insertUserCardCode(cardcodeBO);
 
@@ -121,7 +121,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 			PassportInfoBOByMySql infoBO = new PassportInfoBOByMySql();
 			infoBO.setGid(passportGid);
 			infoBO.setOrgGid(Integer.valueOf(orgGid));
-			infoBO.setPassport(bo.getCardCode());
+			infoBO.setPassport(bo.getCardCode().trim());
 			infoBO.setPassword("123456");
 			infoBO.setPassportType(5);
 			infoBO.setUsertypeCode("01");
@@ -135,7 +135,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 			Integer passportDetailGid =  Integer.valueOf(NumberUtil.getRandomNun(8));
 			detailBO.setGid(passportDetailGid);
 			detailBO.setPassportgid(passportGid);
-			detailBO.setNickName(bo.getNickName());
+			detailBO.setNickName(bo.getNickName().trim());
 			//detailBO.setTelPhone("13211223344");
 			detailBO.setRealName(bo.getNickName());
 			detailBO.setSex(bo.getSex()=="男"?1:0);
@@ -150,7 +150,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 			UserCardcodeBOByMySql cardcodeBO = new UserCardcodeBOByMySql();
 			Integer cardcodeGid =  Integer.valueOf(NumberUtil.getRandomNun(8));
 			cardcodeBO.setGid(cardcodeGid);
-			cardcodeBO.setCardCode(bo.getCardCode());
+			cardcodeBO.setCardCode(bo.getCardCode().trim());
 			cardcodeBO.setPassportgid(passportGid);
 			cardcodeBO.setReaderType("02");
 			cardcodeBO.setReaderTypeName("老师");
