@@ -22,13 +22,20 @@ public class ResolveExcelServiceImplTest {
     @Test
     public void resolveExcel() {
 
-        String orgGids ="300403";
-	    String orgName="北京交通大学图书馆";
+
+
+//	private static Integer orgGid =1418;
+//	private static String orgGids ="1418";
+//	private static String orgName="兰州大学";
+
+
+        String orgGids ="1837";
+	    String orgName="辽宁中医药大学图书馆";
 
         //File file =  new File("D:\\excel\\1418\\01.xls");
         //String fileName=  "D:\\excel\\1418\\01.xls";
         //String fileName=  "D:\\excel\\1418\\06.xls";
-        String fileName = "D:\\excel\\300403\\01.xls";
+        String fileName = "D:\\excel\\1837\\02.xls";
         try {
             resolveExcelService.resolveExcel(fileName,orgName,orgGids);
         } catch (BusinessException e) {

@@ -2,7 +2,9 @@ package com.alemand.resolve.service;
 
 import java.util.List;
 
+import com.alemand.resolve.dto.AddUserDto;
 import com.alemand.resolve.entity.UserInfoBO;
+import org.springframework.web.bind.annotation.RequestBody;
 
 public interface UserInfoService {
 
@@ -23,4 +25,11 @@ public interface UserInfoService {
 	 * @Data:2018/12/2、10:50
 	 */
 	public void batchInsertUserInfoByMySql(List<UserInfoBO> list,String orgName,String orgGid);
+
+//
+//	/***
+//	 * 批量添加用户Mysql 2.0
+//	 * @param addUserDto
+//	 */
+//	public void batchRegisterUser(AddUserDto addUserDto);
 }

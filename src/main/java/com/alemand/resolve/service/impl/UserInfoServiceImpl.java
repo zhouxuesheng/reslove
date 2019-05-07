@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.alemand.resolve.dao.UserInfoDAOByMySql;
+import com.alemand.resolve.dto.AddUserDto;
 import com.alemand.resolve.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.alemand.resolve.dao.UserInfoDAO;
 import com.alemand.resolve.service.UserInfoService;
+import org.springframework.util.StringUtils;
 
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
@@ -55,7 +57,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 			PassportInfoBO infoBO = new PassportInfoBO();
 			infoBO.setGid(passportGid);
 			infoBO.setPassport(passport);
-			infoBO.setNickName(bo.getNickName());
+			infoBO.setNickName(bo.getNickName().trim());
 
 			userInfoDAO.insertPassportInfo(infoBO);
 			//	insert into PASSPORT_INFO_DETAIL (gid,PASSPORT_GID,REAL_NAME,SEX,DEPARTMENT,READER_TYPE)
@@ -64,14 +66,29 @@ public class UserInfoServiceImpl implements UserInfoService {
 			String detailGid = String.valueOf(idWorker.nextId());
 			detailBO.setGid(detailGid);
 			detailBO.setPassportGid(passportGid);
-			detailBO.setRealName(bo.getNickName());
+			if(StringUtils.isEmpty(bo.getNickName())){
+				detailBO.setRealName("");
+			}else{
+				detailBO.setRealName(bo.getNickName().trim());
+			}
+
+
 			if(bo.getSex()==null){
 				detailBO.setSex("-1");
 			}else{
 				detailBO.setSex(bo.getSex() == "女" ? "0":"1");
 			}
-			detailBO.setDepartment(bo.getDenp());
-			detailBO.setReaderType(bo.getReaderType());
+			if(StringUtils.isEmpty(bo.getDenp())){
+				detailBO.setDepartment("");
+			}else{
+				detailBO.setDepartment(bo.getDenp().trim());
+			}
+			if(StringUtils.isEmpty(bo.getReaderType())){
+				detailBO.setReaderType("");
+			}else{
+				detailBO.setReaderType(bo.getReaderType().trim());
+			}
+
 			detailBO.setSchoolName(orgName);
 			userInfoDAO.insertPassportInfoDetail(detailBO);
 
@@ -82,13 +99,31 @@ public class UserInfoServiceImpl implements UserInfoService {
 			UserCardcodeBO cardcodeBO = new UserCardcodeBO();
 			String cardGid = String.valueOf(idWorker.nextId());
 			cardcodeBO.setGid(cardGid);
-			cardcodeBO.setCardCode(bo.getCardCode().trim());
+			if(StringUtils.isEmpty(bo.getCardCode())){
+				cardcodeBO.setCardCode("");
+			}else{
+				cardcodeBO.setCardCode(bo.getCardCode().trim());
+			}
+
 			cardcodeBO.setPassportGid(passportGid);
 			cardcodeBO.setOrgGid(orgGids);
 //			cardcodeBO.setSubmitTime(LocalDateTime.now());
-			cardcodeBO.setReaderType(bo.getReaderType());
-			cardcodeBO.setDept(bo.getDenp());
-			cardcodeBO.setName(bo.getNickName().trim());
+			if(StringUtils.isEmpty(bo.getReaderType())){
+				cardcodeBO.setReaderType("");
+			}else{
+				cardcodeBO.setReaderType(bo.getReaderType().trim());
+			}
+			if(StringUtils.isEmpty(bo.getDenp())){
+				cardcodeBO.setDept("");
+			}else{
+				cardcodeBO.setDept(bo.getDenp().trim());
+			}
+			if(StringUtils.isEmpty(bo.getNickName())){
+				cardcodeBO.setName("");
+			}else{
+				cardcodeBO.setName(bo.getNickName().trim());
+			}
+
 			cardcodeBO.setPassport(passport);
 			userInfoDAO.insertUserCardCode(cardcodeBO);
 
